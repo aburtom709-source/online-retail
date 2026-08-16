@@ -76,22 +76,22 @@ The Silver layer contains cleaned and transformed transactional data.
 
 ### Main transformations
 
-• Remove exact duplicate records
-• Remove records with invalid negative prices
-• Remove zero-quantity records
-• Preserve return transactions
-• Create transaction type
-• Create date attributes
-• Calculate transaction totals
+- Remove exact duplicate records
+- Remove records with invalid negative prices
+- Remove zero-quantity records
+- Preserve return transactions
+- Create transaction type
+- Create date attributes
+- Calculate transaction totals
 
 ### New columns include:
 
-• TransactionType
-• Date
-• Year
-• Month
-• Day
-• Total
+- TransactionType
+- Date
+- Year
+- Month
+- Day
+- Total
 
 The resulting Silver table contains:
 
@@ -99,8 +99,8 @@ The resulting Silver table contains:
 
 The removed records correspond to:
 
-• 5,268 exact duplicates
-• 2 records with negative UnitPrice
+- 5,268 exact duplicates
+- 2 records with negative UnitPrice
 
 Valid return transactions are **not removed** from the dataset because they are required to calculate return values and net revenue.
 
@@ -112,12 +112,12 @@ A dedicated Data Quality step validates the Silver layer before the Gold layer i
 
 The validation process checks for critical data issues, including:
 
-• Negative UnitPrice values
-• Zero-quantity transactions
-• Negative quantities / return transactions
-• Null CustomerID values
-• Exact duplicate records
-• Invalid transaction totals
+- Negative UnitPrice values
+- Zero-quantity transactions
+- Negative quantities / return transactions
+- Null CustomerID values
+- Exact duplicate records
+- Invalid transaction totals
 
 The pipeline only proceeds to the Gold layer when the critical data quality checks pass.
 
@@ -133,14 +133,12 @@ The Gold layer contains business-ready tables designed for analytical consumptio
 
 ## 📅 Monthly Sales
 
-gold_monthly_sales
-
 Contains monthly sales performance metrics:
-• Gross Revenue
-• Returns
-• Net Revenue
-• Orders
-• Units Sold
+- Gross Revenue
+- Returns
+- Net Revenue
+- Orders
+- Units Sold
 
 This table is used to analyze revenue trends over time.
 
@@ -148,15 +146,13 @@ This table is used to analyze revenue trends over time.
 
 ## 🗓️ Daily Sales
 
-gold_daily_sales
-
 Provides the same core business metrics at daily granularity:
 
-• Gross Revenue
-• Returns
-• Net Revenue
-• Orders
-• Units Sold
+- Gross Revenue
+- Returns
+- Net Revenue
+- Orders
+- Units Sold
 
 This table allows more detailed analysis of daily sales performance.
 
@@ -164,29 +160,25 @@ This table allows more detailed analysis of daily sales performance.
 
 ## 🌍 Sales by Country
 
-gold_sales_by_country
-
 Provides sales performance by country, including:
 
-• Gross Revenue
-• Returns
-• Net Revenue
-• Orders
-• Units Sold
+- Gross Revenue
+- Returns
+- Net Revenue
+- Orders
+- Units Sold
 
 ---
 
 ## 🏷️ Sales by Product
 
-gold_sales_by_product
-
 Provides product-level performance including:
 
-• Gross Revenue
-• Returns
-• Net Revenue
-• Units Sold
-• Orders
+- Gross Revenue
+- Returns
+- Net Revenue
+- Units Sold
+- Orders
 
 The complete product dataset is retained in Gold, while Top N products are selected at the dashboard level for visualization.
 
@@ -196,11 +188,11 @@ The complete product dataset is retained in Gold, while Top N products are selec
 
 Provides customer-level sales performance including:
 
-• Gross Revenue
-• Returns
-• Net Revenue
-• Units Sold
-• Orders
+- Gross Revenue
+- Returns
+- Net Revenue
+- Units Sold
+- Orders
 
 This table supports customer-level revenue and purchasing analysis.
 
@@ -208,18 +200,16 @@ This table supports customer-level revenue and purchasing analysis.
 
 ## 🏆 Overall KPIs
 
-gold_overall_kpis
-
 Contains the main business KPIs:
 
-• Gross Revenue
-• Returns
-• Net Revenue
-• Orders
-• Customers
-• Units Sold
-• Average Line Value
-• Average Net Order Value
+- Gross Revenue
+- Returns
+- Net Revenue
+- Orders
+- Customers
+- Units Sold
+- Average Line Value
+- Average Net Order Value
 
 ---
 
@@ -230,16 +220,16 @@ The Gold tables are used to build an interactive retail sales dashboard in Looke
 The dashboard provides a business-oriented view of the processed data rather than exposing the raw transactional layer.
 
 ### Main Dashboard Metrics
-• Gross Revenue
-• Net Revenue
-• Returns
-• Orders
-• Customers
+- Gross Revenue
+- Net Revenue
+- Returns
+- Orders
+- Customers
 ### Main Visualizations
-• Top 10 Products by Net Revenue
-• Top 10 Customers by Net Revenue
-• Top 5 Countries by Net Revenue
-• Monthly Net Revenue Trend
+- Top 10 Products by Net Revenue
+- Top 10 Customers by Net Revenue
+- Top 5 Countries by Net Revenue
+- Monthly Net Revenue Trend
 
 The dashboard uses the complete Gold datasets while applying Top N filters at the visualization level.
 
@@ -253,6 +243,7 @@ The complete pipeline is orchestrated using **Databricks Jobs**.
 
 The workflow contains four dependent tasks:
 
+```text
 01_Ingestion
       │
       ▼
@@ -263,6 +254,7 @@ The workflow contains four dependent tasks:
       │
       ▼
 04_Gold
+```
 
 Each task runs only after its upstream dependency has completed successfully.
 
@@ -276,6 +268,7 @@ Recent scheduled executions completed successfully.
 
 The final pipeline transforms the complete raw dataset into validated and business-ready analytical data.
 
+```text
 Bronze
 541,909 records
       │
@@ -294,18 +287,18 @@ Business-ready analytical tables
       ▼
 Looker Studio
 Sales Dashboard
-
+```
 ---
 
 ## 🛠️ Technologies
 
-• Databricks
-• Apache Spark / PySpark
-• Delta Lake
-• SQL
-• Python
-• Looker Studio
-• Databricks Jobs
+- Databricks
+- Apache Spark / PySpark
+- Delta Lake
+- SQL
+- Python
+- Looker Studio
+- Databricks Jobs
 
 
 
