@@ -129,9 +129,7 @@ This separates **data transformation** from **data validation**, making the pipe
 
 The Gold layer contains business-ready tables designed for analytical consumption.
 
----
-
-## 📅 Monthly Sales
+# 📅 Monthly Sales
 
 Contains monthly sales performance metrics:
 - Gross Revenue
@@ -144,7 +142,7 @@ This table is used to analyze revenue trends over time.
 
 ---
 
-## 🗓️ Daily Sales
+# 🗓️ Daily Sales
 
 Provides the same core business metrics at daily granularity:
 
@@ -158,7 +156,7 @@ This table allows more detailed analysis of daily sales performance.
 
 ---
 
-## 🌍 Sales by Country
+# 🌍 Sales by Country
 
 Provides sales performance by country, including:
 
@@ -170,7 +168,7 @@ Provides sales performance by country, including:
 
 ---
 
-## 🏷️ Sales by Product
+# 🏷️ Sales by Product
 
 Provides product-level performance including:
 
@@ -184,7 +182,7 @@ The complete product dataset is retained in Gold, while Top N products are selec
 
 ---
 
-## 👥 Sales by Customer
+# 👥 Sales by Customer
 
 Provides customer-level sales performance including:
 
@@ -198,7 +196,7 @@ This table supports customer-level revenue and purchasing analysis.
 
 ---
 
-## 🏆 Overall KPIs
+# 🏆 Overall KPIs
 
 Contains the main business KPIs:
 
